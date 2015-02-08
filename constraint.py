@@ -1,5 +1,6 @@
 import operator
 
+
 class Connector(object):
     def __init__(self, init_value=None):
         self.value = init_value
@@ -140,7 +141,7 @@ class CFConverter(object):
         self.cw = Constant(9., self.w)
         self.cx = Constant(5., self.x)
         self.cy = Constant(32., self.y)
-        
+
 
 if __name__ == "__main__":
     c = Connector()
