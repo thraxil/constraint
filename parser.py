@@ -139,20 +139,23 @@ eqn = (expr + "=" + expr).setParseAction(equation)
 # ----------------------------------------
 
 
-def solve(s, unknown, **values):
-    e = eqn.parseString(s).asList()[0]
+def solve(equations, unknown, **values):
     connectors = dict()
-    for v in e.vars().keys():
-        connectors[v] = Connector()
-    e.build(connectors)
+    equations = [eqn.parseString(s).asList()[0] for s in equations]
+    for e in equations:
+        for v in e.vars().keys():
+            if v not in connectors:
+                connectors[v] = Connector()
+    for e in equations:
+        e.build(connectors)
+
     for k, v in values.items():
         connectors[k].set_value(v, User())
     return connectors[unknown].get_value()
 
 
 if __name__ == "__main__":
-    print solve("F = m * a", "a", F=10, m=2.0)
-    print solve("F = m * a", "F", a=3.0, m=2.0)
-    print solve("3 + x = 5 * y_2", "y_2", x=17)
-    print eqn.parseString("3 = 5 * x")
-    print eqn.parseString("5 * x = 3")
+    print solve(["F = m * a", "F = 10", "m=2.0"], "a")
+    print solve(["F = m * a"], "F", a=3.0, m=2.0)
+    print solve(["3 + x = 5 * y_2"], "y_2", x=17)
+
