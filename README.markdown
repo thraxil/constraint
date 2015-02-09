@@ -38,7 +38,7 @@ can be made by combining an adder and a multiplier:
 An even more complicated formula, like the conversion between
 Fahrenheit and Celsius, `9C = 5(F - 32)` could be represented as:
 
-~[celsius to fahrenheit](images/temp_conv.jpg)
+![celsius to fahrenheit](images/temp_conv.jpg)
 
 The system starts out with all connectors having no value. When the
 value on a connector is set, it propagates that value to the
