@@ -125,6 +125,19 @@ class Subtracter(Constraint):
             return self.output.get_value() + self.inputs[1].get_value()
 
 
+class Divider(Constraint):
+    def value(self):
+        # only defined for 2 inputs
+        return self.input_values[0] / self.input_values[1]
+
+    def invert_value(self):
+        # trickier, since it matters *which* input we know
+        if self.inputs[0].has_value():
+            return self.inputs[0].get_value() / self.output.get_value()
+        if self.inputs[1].has_value():
+            return self.output.get_value() * self.inputs[1].get_value()
+
+
 class Multiplier(Constraint):
     def value(self):
         return reduce(operator.mul, self.input_values, 1.)

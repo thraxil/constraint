@@ -3,7 +3,7 @@ from pyparsing import (
     ZeroOrMore, Forward, nums, alphas)
 from constraint import (
     Adder, Multiplier, Connector, Constant,
-    User, Subtracter)
+    User, Subtracter, Divider)
 
 
 class Variable(object):
@@ -48,12 +48,14 @@ ops = {
     "+": Adder,
     "*": Multiplier,
     "-": Subtracter,
+    "/": Divider,
 }
 
 op_names = {
     "+": "Adder",
     "*": "Multiplier",
     "-": "Subtracter",
+    "/": "Divider",
 }
 
 
@@ -164,3 +166,6 @@ if __name__ == "__main__":
     print solve(["A - B = C", "A = 10", "C = 2"], "B")
     print solve(["A - B = C", "B = 10", "C = 2"], "A")
     print solve(["X + 10 = 13"], "X")
+    print solve(["A / B = C", "A = 1", "B = 2"], "C")
+    print solve(["A / B = C", "A = 10", "C = 2"], "B")
+    print solve(["A / B = C", "B = 10", "C = 2"], "A")
