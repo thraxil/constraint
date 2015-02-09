@@ -3,7 +3,7 @@ from pyparsing import (
     ZeroOrMore, Forward, nums, alphas)
 from constraint import (
     Adder, Multiplier, Connector, Constant,
-    User)
+    User, Subtracter)
 
 
 class Variable(object):
@@ -47,11 +47,13 @@ def constant(strg, loc, toks):
 ops = {
     "+": Adder,
     "*": Multiplier,
+    "-": Subtracter,
 }
 
 op_names = {
     "+": "Adder",
     "*": "Multiplier",
+    "-": "Subtracter",
 }
 
 
@@ -158,4 +160,6 @@ if __name__ == "__main__":
     print solve(["F = m * a", "F = 10", "m=2.0"], "a")
     print solve(["F = m * a"], "F", a=3.0, m=2.0)
     print solve(["3 + x = 5 * y_2"], "y_2", x=17)
-
+    print solve(["A - B = C", "A = 1", "B = 2"], "C")
+    print solve(["A - B = C", "A = 10", "C = 2"], "B")
+    print solve(["A - B = C", "B = 10", "C = 2"], "A")
