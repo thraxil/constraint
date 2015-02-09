@@ -163,3 +163,4 @@ if __name__ == "__main__":
     print solve(["A - B = C", "A = 1", "B = 2"], "C")
     print solve(["A - B = C", "A = 10", "C = 2"], "B")
     print solve(["A - B = C", "B = 10", "C = 2"], "A")
+    print solve(["X + 10 = 13"], "X")
