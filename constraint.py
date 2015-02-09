@@ -174,7 +174,7 @@ if __name__ == "__main__":
     f = Connector()
     cfc = CFConverter(c, f)
 
-    f.set_value(20., User())
+    f.set_value(32., User())
     print c.get_value()
 
     # 4 + x = 5 * y
