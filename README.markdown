@@ -119,7 +119,12 @@ The nature of the approach has some basic limitations:
 * each component must be
   [injective](http://en.wikipedia.org/wiki/Injective_function) if you
   expect it to work both ways. This rules out quite a few functions
-  (eg `square()` isn't injective unless you limit it to `>= 0`).
+  (eg `square()` isn't injective unless you limit it to `>=
+  0`). ("injective" isn't *exactly* the right term, as that implies
+  that there is a unique output for each input tuple. ie, that "2 + 3"
+  is distinct from "3 + 2". Really, we want injective functions as
+  long as you treat the inputs as an unordered set rather than
+  ordered, but I don't know the right word for that.)
 * It won't actually solve anything that would require
   substitution. Eg, `solve(["X + 10 = Y", "Y * 2 = X"], "X")` won't
   give you results.
