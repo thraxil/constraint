@@ -30,6 +30,7 @@ class Connector(object):
         if retractor != self.informant:
             return
         self.informant = None
+        self.value = None
         for c in self.constraints:
             if c == retractor:
                 continue
@@ -170,12 +171,16 @@ class CFConverter(object):
 
 
 if __name__ == "__main__":
+    user = User()
     c = Connector()
     f = Connector()
     cfc = CFConverter(c, f)
 
-    f.set_value(32., User())
+    f.set_value(32., user)
     print c.get_value()
+    f.forget_value(user)
+    print f.has_value()
+    print c.has_value()
 
     # 4 + x = 5 * y
     c1 = Connector()
@@ -189,3 +194,4 @@ if __name__ == "__main__":
     cons2 = Constant(5, c5)
     c4.set_value(7., User())
     print c1.get_value()
+    c
